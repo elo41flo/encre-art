@@ -61,3 +61,54 @@ footer {
   border-top: 1px solid #ddd;
   padding-top: 20px;
 }
+
+/*Responsive*/
+@media screen and (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 1.7rem;
+  }
+
+  header p {
+    font-size: 0.95rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    border-left: 4px solid #1f30cb;
+    padding-left: 8px;
+  }
+
+  ul {
+    font-size: 0.95rem;
+  }
+}

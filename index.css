@@ -165,8 +165,8 @@ footer {
 /*Carrousel*/
 .carousel-container {
   position: relative;
-  width: 930px; /* 3 images visibles * 310px */
-  overflow: hidden; /* indispensable pour cacher les images hors champ */
+  width: 930px;
+  overflow: hidden;
   margin: auto;
 }
 
@@ -210,3 +210,59 @@ footer {
 }
 
 /*Responsive*/
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 35px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    strong {
+        font-size: 17px;
+    }
+
+    img {
+        max-width: 50%;
+        height: auto;
+    }
+
+    .menu-button {
+        padding: 5px 8px;
+        font-size: 10px;
+    }
+
+    #toggle-dark-mode {
+        padding: 5px 8px;
+        font-size: 10px;
+    }
+
+    .menu {
+        width: 150px;
+    }
+
+    .menu li {
+        padding: 5px;
+    }
+
+    .carousel-container {
+        width: 300px;
+    }
+
+    iframe {
+        width: auto;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .carousel-container {
+        width: 500px;
+    }
+
+    iframe {
+        width: 500px;
+        height: 550px;
+    }
+}

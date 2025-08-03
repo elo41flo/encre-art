@@ -8,31 +8,44 @@
         menuButton.setAttribute('aria-expanded', !isExpanded);
     });
 
-    // Fonction pour déplacer les slides d'un carrousel spécifique
-        function moveSlide(direction, carouselId) {
-            const carousel = document.getElementById(carouselId);
-            const images = carousel.querySelector('.carousel-images');
-            const totalImages = images.children.length;
-            const imagesToShow = 3; // Nombre d'images visibles
-            const imageWidth = 310; // Largeur de l'image (300px + 10px de margin)
+  const carouselImages = document.querySelector('.carousel-images');
+const images = document.querySelectorAll('.carousel-images img');
+let currentIndex = 0;
 
-            let currentIndex = parseInt(carousel.getAttribute('data-current-index')) || 0;
+function visibleCount() {
+  const screenWidth = window.innerWidth;
+  if (screenWidth >= 1024) return 3;
+  if (screenWidth >= 768) return 2;
+  return 1; // mobile
+}
 
-            currentIndex += direction;
+function updateCarousel() {
+  const imageWidth = carouselImages.clientWidth / visibleCount();
+  carouselImages.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+}
 
-            // Limiter l'index
-            if (currentIndex < 0) {
-                currentIndex = totalImages - imagesToShow; // Revenir au début
-            } else if (currentIndex > totalImages - imagesToShow) {
-                currentIndex = 0; // Revenir à la première image
-            }
+document.querySelector('.next').addEventListener('click', () => {
+  if (currentIndex < images.length - visibleCount()) {
+    currentIndex++;
+    updateCarousel();
+  }
+});
 
-            const translateX = -currentIndex * imageWidth; // Translation en pixels
-            images.style.transform = `translateX(${translateX}px)`;
+document.querySelector('.prev').addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateCarousel();
+  }
+});
 
-            // Mettre à jour l'index actuel
-            carousel.setAttribute('data-current-index', currentIndex);
-        }
+window.addEventListener('resize', () => {
+  updateCarousel();
+});
+
+window.addEventListener('load', updateCarousel);
+
+
+
 
         document.addEventListener('DOMContentLoaded', () => {
   const button = document.getElementById('toggle-dark-mode');

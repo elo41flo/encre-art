@@ -165,7 +165,8 @@ footer {
 /*Carrousel*/
 .carousel-container {
   position: relative;
-  width: 930px;
+  width: 100%;
+  max-width: 930px;
   overflow: hidden;
   margin: auto;
 }
@@ -176,12 +177,12 @@ footer {
 }
 
 .carousel-images img {
-  width: 300px;
-  height: 400px;
-  margin-right: 10px;
+  flex: 0 0 33.33%; /* par défaut : 3 images visibles */
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 10px;
-  flex-shrink: 0;
+  aspect-ratio: 16 / 9;
 }
 
 /*Bouton carrousel*/
@@ -247,22 +248,32 @@ footer {
     }
 
     .carousel-container {
-        width: 300px;
+        height: auto;
+    }
+
+    .carousel-images img {
+        width: 100vw;
     }
 
     iframe {
         width: auto;
         height: auto;
     }
+
+    .carousel-container .prev,
+    .carousel-container .next {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
-@media screen and (max-width: 768px) {
-    .carousel-container {
-        width: 500px;
-    }
-
-    iframe {
-        width: 500px;
-        height: 550px;
-    }
+@media (max-width: 1023px) {
+  .carousel-images img {
+    flex: 0 0 50%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .carousel-images img {
+    width: 33.3333%;
+  }
 }

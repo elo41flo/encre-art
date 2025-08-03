@@ -1,4 +1,4 @@
-    // Gestion de l'affichage du menu
+
     const menuButton = document.getElementById('menuButton');
     const menu = document.getElementById('menu');
 
